@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Factbook</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>
+    Résultat de l'API Wikidata pour {{code}}
+  </h1>
+  <h2>
+    Informations sur la requête
+  </h2>
+  <p>
+    Code HTTP :{{reponse.status_code}}
+  </p>  
+  <p>
+    Type de contenu : {{reponse.headers['Content-Type']}}
+  </p>
+{% if 'entities' in reponse.json() %}
+    <p>
+        Données reçues
+    </p>
+    <p>
+        {{reponse.json()}}
+  </p>
+ 
+{%else%}
+<p>
+    Aucune donnée valide n'a été retournée pour l'identifiant "{{code}}"
+</p>
+{% endif %}
+</body>
+
+</html>
