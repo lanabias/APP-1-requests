@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>APP-1-requests</title>
-</head>
+    <title>APP-1</title>
+
+  </head>
 
 <body>
   <h1>
@@ -20,7 +21,7 @@
   <p>
     Type de contenu : {{reponse.headers['Content-Type']}}
   </p>
-{% if 'entities' in reponse.json() %}
+{% if (reponse.status_code==200) and ('entities' in reponse.json()) %}
     <p>
         Données reçues
     </p>
